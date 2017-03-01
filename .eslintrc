@@ -1,0 +1,18 @@
+{
+  rules: {
+    // Override any settings from the 'parent' configuration
+    semi: ['error', 'never'],
+    no-shadow: ['off'],
+    comma-dangle: ['error', 'never'],
+    react/jsx-filename-extension: [1, { 'extensions': ['.js', '.jsx'] }],
+    import/no-extraneous-dependencies: ['error', {'devDependencies': false, 'optionalDependencies': false, 'peerDependencies': false}]
+  },
+  globals: {
+    document: true,
+    window: true,
+    env: true,
+    __DEV__: true,
+    __PROD__: true,
+    fetch: true
+  }
+}
