@@ -5,11 +5,11 @@ const Footer = () => (
   <p>
     Show:
     {" "}
-    <Link filter="SHOW_ALL">
+    <Link>
       All
     </Link>
     {", "}
-    <Link filter="SHOW_COMPLETED">
+    <Link>
       Completed
     </Link>
   </p>
