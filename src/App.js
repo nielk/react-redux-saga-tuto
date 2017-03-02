@@ -1,21 +1,33 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import Footer from './Footer'
 import AddTodo from './AddTodo'
 import TodoList from './TodoList'
 
-const todos = [
-  {id: 1, completed: true, text: 'Lorem ipsum'},
-  {id: 2, completed: true, text: 'Ipsum loreat sit amet'},
-  {id: 3, completed: true, text: 'sit amet loreat ipsum'},
-  {id: 4, completed: true, text: 'Amet sit ipsum loreat'},
-]
 
-const App = () => (
-  <div>
-    <AddTodo />
-    <TodoList todos={todos}/>
-    <Footer />
-  </div>
-)
+const App = (props) => {
+  return (
+    <div>
+      <AddTodo />
+      <TodoList todos={props.todos}/>
+      <Footer />
+    </div>
+  )
+}
 
-export default App
+const filterTodos = (todos, mode) => {
+  switch (mode) {
+    case 'ALL':
+      return todos
+    case 'COMPLETED':
+      return todos.filter(todo => todo.completed)
+  }
+}
+
+const mapStateToProps = (state) => {
+  return {
+    todos: filterTodos(state.todos, state.show)
+  }
+}
+
+export default connect(mapStateToProps)(App)

@@ -1,18 +1,20 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { showAllTodo, showCompletedTodo } from './actions'
 import Link from './Link'
 
-const Footer = () => (
+const Footer = ({ dispatch }) => (
   <p>
     Show:
     {" "}
-    <Link>
+    <Link onClick={ () => dispatch(showAllTodo()) }>
       All
     </Link>
     {", "}
-    <Link>
+    <Link onClick={ () => dispatch(showCompletedTodo()) }>
       Completed
     </Link>
   </p>
 )
 
-export default Footer
+export default connect()(Footer)

@@ -1,13 +1,15 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { toggleTodo } from './actions'
 import Todo from './Todo'
 
-const TodoList = ({ todos }) => (
+const TodoList = ({ todos, dispatch }) => (
   <ul>
     {todos.map((todo, index) =>
       <Todo
         key={index}
         {...todo}
-        onClick={() => { console.log('on todo click…')}}
+        onClick={() => { dispatch(toggleTodo(index)) }}
       />
     )}
   </ul>
@@ -21,4 +23,4 @@ TodoList.propTypes = {
   onTodoClick: PropTypes.func
 }
 
-export default TodoList
+export default connect()(TodoList)

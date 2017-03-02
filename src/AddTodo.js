@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { addTodo } from './actions'
 
-const AddTodo = (props) => {
+const AddTodo = ({ dispatch }) => {
   let input
 
   return (
@@ -10,8 +12,7 @@ const AddTodo = (props) => {
         if (!input.value.trim()) {
           return
         }
-        // @TODO: call redux action
-        console.log(input.value)
+        dispatch(addTodo(input.value))
         input.value = ''
       }}>
         <input ref={node => {
@@ -27,4 +28,4 @@ const AddTodo = (props) => {
 
 AddTodo.propTypes = {}
 
-export default AddTodo
+export default connect()(AddTodo)
