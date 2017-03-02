@@ -3,9 +3,9 @@ import Todo from './Todo'
 
 const TodoList = ({ todos }) => (
   <ul>
-    {todos.map(todo =>
+    {todos.map((todo, index) =>
       <Todo
-        key={todo.id}
+        key={index}
         {...todo}
         onClick={() => { console.log('on todo click…')}}
       />
@@ -15,7 +15,6 @@ const TodoList = ({ todos }) => (
 
 TodoList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
     completed: PropTypes.bool.isRequired,
     text: PropTypes.string.isRequired
   }).isRequired).isRequired,
